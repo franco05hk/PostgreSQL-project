@@ -44,10 +44,6 @@ There are 15 tables in the DVD Rental database:
 - city – stores city names.
 - country – stores country names.
 
-## 🌐 Dataset
-- [Link](https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/) ; or
-- [Download Here](https://github.com/gordonkwokkwok/DVD-Rental-PostgreSQL-Project/tree/main/dataset)
-
 📝 To restore a .tar file in pgAdmin, follow these steps:
 ```
 1. First, you need to convert the dvdrental.zip file into a dvdrental.tar file. You can use a compression tool like 7-Zip or WinRAR to extract the contents of the dvdrental.zip file. Once extracted, you can create a new archive and save it as dvdrental.tar.
