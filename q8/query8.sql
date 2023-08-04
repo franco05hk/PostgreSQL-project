@@ -6,3 +6,5 @@ where extract(month from return_date) = 5)
 
 select r.rental_id, r.customer_id, r.month, c.email, concat(c.first_name, ' ', c.last_name) as customer_fullname from return_in_may r
 join customer c on r.customer_id=c.customer_id
+
+--find the customer fullname, email who returned film in May for marketing purpose
