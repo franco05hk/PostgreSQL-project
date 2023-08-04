@@ -71,6 +71,3 @@ By following these steps, you will be able to restore the dvdrental.tar file in 
 ## 👥 Contributer
 - Franco Fan
 
-<p>
-  <img src="https://github.com/gordonkwokkwok/DVD-Rental-PostgreSQL-Project/assets/112631794/04df4208-da1b-4c88-b18d-d711c0785d31" alt="Alt Text" width="260">
-</p>
