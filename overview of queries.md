@@ -83,4 +83,99 @@ staff_id in
 Query to find out the list of unique staff, their fullname, user id in system and their active status which had completed at least 1 transaction in both rental and payment
 
 -techniques used-
-in 
+in , sub query, concat, as
+
+-code: query7-
+select c.customer_id, concat(c.first_name, ' ',c.last_name) as customer_fullname, c.email, c.activebool, p.payment_date, row_number() over (order by p.payment_date desc) as latest_purchase
+from customer c left join payment p
+on c.customer_id=p.customer_id
+where c.email like '%@%'
+limit 100
+
+-explanation-
+Query to find the latest 100 payment with the corresponding customer details including email for further marketing usage
+
+-techniques used-
+like, %, limit, concat, left join
+
+-code: query8-
+with return_in_may as (
+select rental_id, customer_id, extract(month from return_date) as month
+from rental
+where extract(month from return_date) = 5)
+
+select r.rental_id, r.customer_id, r.month, c.email, concat(c.first_name, ' ', c.last_name) as customer_fullname from return_in_may r
+join customer c on r.customer_id=c.customer_id
+
+
+-explanation-
+Query to find the customer fullname, email who returned film in May for marketing purpose
+
+-techniques used-
+CTE, join, concat
+
+-code: query9-
+select count(c.customer_id), 
+case
+when ct.city like 'A%' Then 'A cities'
+when ct.city like 'B%' Then 'B cities'
+when ct.city like 'C%' Then 'C cities'
+else 'others'
+end as city_category
+from address a 
+join customer c on a.address_id=c.address_id
+join city ct on a.city_id=ct.city_id
+group by city_category
+order by city_category
+
+-explanation-
+Query to find out the customer address count in each city_category we want to separate them into for marketing purpose
+
+-techniques used-
+case when, like, join, group by, order by
+
+-code: query10-
+select round(min(f.length)) as min_length, round(max(f.length)) as max_length, round(avg(f.length)) as average_length from film f
+join film_category fc on f.film_id=fc.film_id
+join category c on fc.category_id=c.category_id
+where c.name='Animation'
+
+-explanation-
+Query to find out the min, max, average length of animation type of film
+
+-techniques used-
+round, max, min, avg, join
+
+-code: query11-
+with return_in_may as (
+select rental_id, customer_id, extract(month from return_date) as month
+from rental
+where extract(month from return_date) = 5),
+ 
+customer_rental_counts AS (
+SELECT customer_id, COUNT(rental_id) AS total_rentals
+FROM return_in_may
+GROUP BY customer_id)
+
+SELECT
+    r.rental_id,
+    r.customer_id,
+    r.month,
+    c.email,
+    CONCAT(c.first_name, ' ', c.last_name) AS customer_fullname,
+    RANK() OVER (ORDER BY crc.total_rentals DESC) AS customer_rank
+FROM
+    return_in_may r
+JOIN
+    customer c ON r.customer_id = c.customer_id
+JOIN
+    customer_rental_counts crc ON r.customer_id = crc.customer_id
+order by customer_rank;
+
+
+-explanation-
+Query to find the ranking of total rentals for those customers which have return some fils within May
+findings: same customer details found to registered as diff. customer_id, and the data tells that multiple customers have the same number of total rentals returned in May.
+
+-techniques used-
+CTE, rank over
