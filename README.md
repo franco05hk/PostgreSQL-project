@@ -67,3 +67,8 @@ By following these steps, you will be able to restore the dvdrental.tar file in 
 ## 👥 Contributer
 - Franco Fan
 
+##  Queries and explanations
+Please check in 'overview of queries.md'
+
+##  Output
+Output cvs is stored in the Q folders
