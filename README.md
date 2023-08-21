@@ -28,6 +28,8 @@ and length > 140
 and f.language_id=1
 and f.rental_rate>4
 order by f.length desc, f.title'
+
+
 <br>Query 2:
 Identify the top 10 actors involved in the most films, showcasing the count of their film involvements.
 
@@ -40,6 +42,8 @@ on fm.film_id=f.film_id
 group by actor_fullname
 order by count(f.title) desc
 limit 10'
+
+
 <br>Query 3:
 Calculate the count of films per category with the highest replacement cost, ordered by the count.
 
@@ -51,12 +55,16 @@ on fc.category_id=c.category_id
 where replacement_cost = 29.99
 group by film_category
 order by number_of_film desc'
+
+
 <br>Query 4:
 Count films by rating with a rental rate between 0.99 and 2.99, grouped by rating.
 
 <br>'select count(title), rating from film
 where rental_rate between 0.99 and 2.99
 group by rating'
+
+
 <br>Query 5:
 Determine the count of unique actors involved in action movies.
 
@@ -65,6 +73,8 @@ right join film f on fa.film_id=f.film_id
 right join film_category fc on fa.film_id=fc.film_id
 right join category c on fc.category_id=c.category_id
 where c.category_id=1'
+
+
 <br>Query 6:
 List staff members who have completed at least one transaction in both rentals and payments, including their details.
 
@@ -74,6 +84,8 @@ where staff_id in
 and 
 staff_id in
 (select staff_id from payment)'
+
+
 <br>Query 7:
 Obtain customer details along with the latest 100 payment dates and their corresponding email addresses.
 
@@ -82,6 +94,8 @@ from customer c left join payment p
 on c.customer_id=p.customer_id
 where c.email like '%@%'
 limit 100'
+
+
 <br>Query 8:
 Find customer details of those who returned films in May, including email addresses.
 
@@ -92,6 +106,7 @@ where extract(month from return_date) = 5)
 
 select r.rental_id, r.customer_id, r.month, c.email, concat(c.first_name, ' ', c.last_name) as customer_fullname from return_in_may r
 join customer c on r.customer_id=c.customer_id'
+
 
 <br>Query 9:
 Group customer addresses into city categories (A, B, C, and others) and count customers in each category.
@@ -109,6 +124,7 @@ join city ct on a.city_id=ct.city_id
 group by city_category
 order by city_category'
 
+
 <br>Query 10:
 Calculate statistics for animation film lengths, including min, max, and average lengths.
 
@@ -116,6 +132,7 @@ Calculate statistics for animation film lengths, including min, max, and average
 join film_category fc on f.film_id=fc.film_id
 join category c on fc.category_id=c.category_id
 where c.name='Animation''
+
 
 <br>Query 11:
 Rank customers based on their total rentals returned in May, even when customers have the same rental count.
