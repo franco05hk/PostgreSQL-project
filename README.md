@@ -1,8 +1,9 @@
-# postgresql sample project
+# PostgreSQL query project
 
+## 📃 Project Overview
 For learning purpose, this project is going to explore some sql findings in DVD rental database.
 
-details and download link of the dataset:
+Details and download link of the dataset:
 https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
 
 ## 📚 Introduction
