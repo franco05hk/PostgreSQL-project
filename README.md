@@ -17,7 +17,7 @@ Tables in the dataset: 'actor', 'film', 'film_actor', 'category', 'film_category
 - Leverage Git commands for version control and effective collaboration.
 - Maintain comprehensive project documentation and a well-structured code repository here on GitHub.
 
-## 📃 Query Abstract
+## 📃 Queries
 Query 1:
 Retrieve film details released in 2006 with a rental rate above 4 in English, sorting by length and title.
 
