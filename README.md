@@ -6,6 +6,11 @@ For learning purpose, this project is going to explore some sql findings in DVD 
 Details and download link of the dataset:
 https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
 
+## 📊 DVD Rental ER Model
+<p align="center">
+  <img src="https://github.com/gordonkwokkwok/DVD-Rental-PostgreSQL-Project/assets/112631794/5c55cbde-9e67-4363-99bc-177bf7903882" alt="Image" width="700">
+</p>
+
 ## 📚 Introduction
 This is a hands-on application of PostgreSQL for learning purpose. 
 
@@ -165,11 +170,6 @@ order by customer_rank;'
 ## 🔧 Tool
 - PostgreSQL (Version: 7.3)
 - Git (Version: 3.2.7)
-
-## 📊 DVD Rental ER Model
-<p align="center">
-  <img src="https://github.com/gordonkwokkwok/DVD-Rental-PostgreSQL-Project/assets/112631794/5c55cbde-9e67-4363-99bc-177bf7903882" alt="Image" width="700">
-</p>
 
 ## 📃 DVD Rental Database Tables
 There are 15 tables in the DVD Rental database:
